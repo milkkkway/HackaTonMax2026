@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { maxBridge } from '../../services/maxBridge';
-import { MoreVertical, X, Share2, HelpCircle, LogOut, ArrowLeft, ShieldCheck, UserCheck } from 'lucide-react';
+import { MoreVertical, LogOut, ArrowLeft } from 'lucide-react';
 
 interface MaxHeaderProps {
   onBack?: () => void;
@@ -9,18 +9,8 @@ interface MaxHeaderProps {
 }
 
 export const MaxHeader: React.FC<MaxHeaderProps> = ({ onBack, showBack = false }) => {
-  const { currentUser, currentRole, logout, quickLogin, setIsDeployGuideOpen } = useApp();
+  const { currentUser, currentRole, logout } = useApp();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleShare = () => {
-    maxBridge.shareCase('Биржа проектов и кейсов для студентов в МАХ', 'https://max.ru/CasesBot?startapp=share_main');
-    setMenuOpen(false);
-  };
-
-  const handleClose = () => {
-    maxBridge.haptic('light');
-    maxBridge.closeApp();
-  };
 
   return (
     <div className="relative w-full z-40 bg-white/70 backdrop-blur-md border-b border-black/5 px-4 py-2 flex items-center justify-between shadow-2xs">
@@ -59,20 +49,6 @@ export const MaxHeader: React.FC<MaxHeaderProps> = ({ onBack, showBack = false }
 
       {/* Right: Quick actions & MAX Messenger Menu */}
       <div className="flex items-center gap-1.5">
-        {/* Deploy Guide Quick Button */}
-        <button
-          type="button"
-          onClick={() => {
-            maxBridge.haptic('light');
-            setIsDeployGuideOpen(true);
-          }}
-          className="hidden xs:flex items-center gap-1 bg-[#141517] text-white hover:bg-black text-[10.5px] font-bold px-2.5 py-1 rounded-full shadow-2xs transition-all active:scale-95"
-          title="Инструкция по подключению в МАХ"
-        >
-          <span className="w-2 h-2 rounded-full bg-[#BAEA55] animate-pulse" />
-          <span>Деплой в МАХ</span>
-        </button>
-
         {/* 3-Dots MAX Native Menu Button */}
         <div className="relative">
           <button
@@ -89,8 +65,8 @@ export const MaxHeader: React.FC<MaxHeaderProps> = ({ onBack, showBack = false }
 
           {/* Dropdown Menu */}
           {menuOpen && (
-            <div className="absolute right-0 top-10 w-60 bg-[#141517] text-white rounded-2xl shadow-2xl border border-white/10 p-2 z-50 animate-in fade-in zoom-in-95 duration-100">
-              <div className="px-3 py-1.5 border-b border-white/10 text-[11px] text-slate-400">
+            <div className="absolute right-0 top-10 w-52 bg-[#141517] text-white rounded-2xl shadow-2xl border border-white/10 p-2 z-50 animate-in fade-in zoom-in-95 duration-100">
+              <div className="px-3 py-1.5 text-[11px] text-slate-400">
                 {currentUser ? (
                   <div>
                     <div className="font-bold text-white truncate">{currentUser.name}</div>
@@ -102,27 +78,6 @@ export const MaxHeader: React.FC<MaxHeaderProps> = ({ onBack, showBack = false }
                   'Не авторизован'
                 )}
               </div>
-
-              <button
-                type="button"
-                onClick={() => {
-                  setIsDeployGuideOpen(true);
-                  setMenuOpen(false);
-                }}
-                className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all"
-              >
-                <HelpCircle className="w-4 h-4 text-[#BAEA55]" />
-                <span>Инструкция по деплою в МАХ</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={handleShare}
-                className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-semibold text-slate-200 hover:text-white hover:bg-white/10 rounded-xl transition-all"
-              >
-                <Share2 className="w-4 h-4 text-sky-400" />
-                <span>Поделиться в чате МАХ</span>
-              </button>
 
               {currentUser && (
                 <div className="mt-1 border-t border-white/10 pt-1">

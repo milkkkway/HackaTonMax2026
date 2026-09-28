@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
-import { StatusBar } from './components/max/StatusBar';
 import { MaxHeader } from './components/max/MaxHeader';
 import { BottomNavBar } from './components/max/BottomNavBar';
 import { ScreenAuth } from './components/auth/ScreenAuth';
@@ -21,9 +20,7 @@ import { AddProjectModal } from './components/modals/AddProjectModal';
 import { ChangePasswordModal } from './components/modals/ChangePasswordModal';
 import { DeployGuideModal } from './components/modals/DeployGuideModal';
 import { VacancyDetailsModal } from './components/modals/VacancyDetailsModal';
-import { Vacancy, Application } from './types';
-import { maxBridge } from './services/maxBridge';
-import { Smartphone, Monitor, BookOpen } from 'lucide-react';
+import { Vacancy } from './types';
 
 function AppContent() {
   const {
@@ -50,63 +47,15 @@ function AppContent() {
   const [isChangePassOpen, setIsChangePassOpen] = useState(false);
   const [selectedTaskForResponses, setSelectedTaskForResponses] = useState<string | null>(null);
 
-  // Desktop simulator frame toggle
-  const [isDeviceFramed, setIsDeviceFramed] = useState<boolean>(true);
-
-  // Auto-detect if opened in native mobile webview / touch screen
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.innerWidth < 640) {
-      setIsDeviceFramed(false);
-    }
-  }, []);
-
   const handleOpenResponsesForTask = (taskId: string) => {
     setSelectedTaskForResponses(taskId);
     setEmployerTab('responses');
   };
 
   return (
-    <div className="min-h-screen bg-[#DDE3EA] flex flex-col justify-center items-center p-0 sm:p-4 select-none overflow-x-hidden font-sans text-[#121316]">
-      {/* Top Desktop Controls Bar (Only shown on wider screens) */}
-      <div className="hidden sm:flex items-center justify-between w-full max-w-[420px] mb-2 px-2 text-xs text-slate-600">
-        <div className="flex items-center gap-1.5 font-bold text-slate-800">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#BAEA55] border border-black/40" />
-          <span>МАХ 2026 Mini App</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => setIsDeployGuideOpen(true)}
-            className="flex items-center gap-1 text-[11px] font-bold text-[#141517] hover:text-black bg-white px-2.5 py-1 rounded-full shadow-2xs border border-slate-300 transition-all active:scale-95"
-          >
-            <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Деплой</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setIsDeviceFramed(!isDeviceFramed)}
-            className="flex items-center gap-1 text-[11px] font-semibold text-slate-700 hover:text-black bg-white/70 px-2 py-1 rounded-full border border-slate-300 transition-all"
-            title="Переключить рамку смартфона"
-          >
-            {isDeviceFramed ? <Smartphone className="w-3.5 h-3.5 text-black" /> : <Monitor className="w-3.5 h-3.5" />}
-            <span>{isDeviceFramed ? '375×812' : 'Полноэкранный'}</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Main Container / Phone Container */}
-      <div
-        className={`w-full bg-[#EEF6E1] text-[#121316] flex flex-col relative transition-all duration-300 ${
-          isDeviceFramed
-            ? 'max-w-[390px] h-[844px] rounded-[44px] overflow-hidden shadow-2xl border-[6px] border-[#141517] my-auto'
-            : 'min-h-screen max-w-md shadow-lg border-x border-slate-300'
-        }`}
-      >
-        {/* Top Phone Status Bar */}
-        <StatusBar dark />
-
+    <div className="min-h-screen bg-[#DDE3EA] flex flex-col justify-center items-center p-0 sm:p-2 select-none overflow-x-hidden font-sans text-[#121316]">
+      {/* Main App Container */}
+      <div className="w-full h-screen max-w-md bg-[#EEF6E1] text-[#121316] flex flex-col relative shadow-xl mx-auto sm:border-x sm:border-slate-300 overflow-hidden sm:h-[844px] sm:rounded-3xl">
         {/* MAX Messenger Header with BackButton & Action Menu */}
         <MaxHeader
           showBack={selectedVacancyDetail !== null}
@@ -214,9 +163,6 @@ function AppContent() {
 
         {/* Floating Bottom Navigation Bar */}
         {currentUser && <BottomNavBar />}
-
-        {/* iOS Home Indicator Bar */}
-        <div className="w-32 h-1 bg-black/60 rounded-full mx-auto my-1.5 shrink-0 pointer-events-none z-20" />
       </div>
 
       {/* Deploy Guide Modal (Global Desktop/Mobile Overlay) */}
