@@ -33,8 +33,8 @@ export const AddProjectModal: React.FC<AddProjectModalProps> = ({ onClose }) => 
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 select-none">
-      <div className="bg-white text-[#121316] rounded-3xl max-w-md w-full shadow-2xl border-4 border-black/80 overflow-hidden animate-in fade-in zoom-in-95">
+    <div className="absolute inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 select-none">
+      <div className="bg-white text-[#121316] rounded-3xl max-w-md w-full shadow-2xl border-2 border-black/80 overflow-hidden animate-in fade-in zoom-in-95">
         <div className="p-4 bg-[#141517] text-white flex items-center justify-between">
           <div className="flex items-center gap-2">
             <FolderGit2 className="w-4 h-4 text-[#BAEA55]" />

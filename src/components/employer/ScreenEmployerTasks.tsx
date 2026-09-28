@@ -22,15 +22,15 @@ export const ScreenEmployerTasks: React.FC<ScreenEmployerTasksProps> = ({
   const topTask = myTasks[0];
 
   return (
-    <div className="flex-1 w-full flex flex-col p-4 pb-24 overflow-y-auto space-y-4">
+    <div className="flex-1 min-h-0 w-full flex flex-col px-3.5 pt-3 pb-28 overflow-y-auto space-y-3.5">
       {/* Top Creation Banner */}
-      <div className="bg-[#141517] text-white rounded-3xl p-5 shadow-xl border border-white/5 relative overflow-hidden flex flex-col justify-between">
+      <div className="bg-[#141517] text-white rounded-3xl p-4 shadow-xl border border-white/5 relative overflow-hidden flex flex-col justify-between shrink-0">
         <div className="flex items-center justify-between">
           <div>
             <span className="text-[11px] font-bold text-[#BAEA55] uppercase tracking-wider block">
               Управление задачами
             </span>
-            <h2 className="text-lg font-black text-white mt-0.5">Опубликовать кейс</h2>
+            <h2 className="text-base font-black text-white mt-0.5">Опубликовать кейс</h2>
             <p className="text-xs text-slate-300 mt-1 max-w-[210px] leading-snug">
               Привлекайте талантливых студентов ВУЗов на проектные задачи
             </p>
@@ -41,10 +41,10 @@ export const ScreenEmployerTasks: React.FC<ScreenEmployerTasksProps> = ({
               maxBridge.haptic('medium');
               onOpenCreateTask();
             }}
-            className="w-13 h-13 rounded-2xl bg-[#BAEA55] hover:bg-[#c2f35d] text-black flex items-center justify-center font-black shadow-lg active:scale-95 transition-all cursor-pointer shrink-0"
+            className="w-12 h-12 rounded-2xl bg-[#BAEA55] hover:bg-[#c2f35d] text-black flex items-center justify-center font-black shadow-lg active:scale-95 transition-all cursor-pointer shrink-0"
             title="Новая задача"
           >
-            <Plus className="w-7 h-7" />
+            <Plus className="w-6 h-6" />
           </button>
         </div>
 

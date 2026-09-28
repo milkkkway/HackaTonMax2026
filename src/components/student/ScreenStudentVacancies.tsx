@@ -74,9 +74,9 @@ export const ScreenStudentVacancies: React.FC<ScreenStudentVacanciesProps> = ({
   }, [applications, currentUser, vacancies, deals]);
 
   return (
-    <div className="flex-1 w-full flex flex-col p-4 pb-24 overflow-y-auto space-y-4">
+    <div className="flex-1 min-h-0 w-full flex flex-col px-3.5 pt-3 pb-28 overflow-y-auto space-y-3.5">
       {/* Top Sub-tabs Switcher */}
-      <div className="bg-[#141517] p-1 rounded-2xl flex items-center shadow-md">
+      <div className="bg-[#141517] p-1 rounded-2xl flex items-center shadow-md shrink-0">
         <button
           type="button"
           onClick={() => {
@@ -105,28 +105,8 @@ export const ScreenStudentVacancies: React.FC<ScreenStudentVacanciesProps> = ({
 
       {subTab === 'catalog' ? (
         <>
-          {/* Stepped Featured Vacancy Card - As explicitly requested by the user */}
-          {featuredVacancy && (
-            <div>
-              <div className="flex items-center justify-between mb-1.5 px-1">
-                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-                  Рекомендуемый кейс дня
-                </span>
-                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                  Проверено МАХ
-                </span>
-              </div>
-              <SteppedVacancyCard
-                vacancy={featuredVacancy}
-                onApply={() => onApplyVacancy(featuredVacancy)}
-                onViewDetails={() => onSelectVacancy(featuredVacancy)}
-                hasApplied={myAppliedIds.has(featuredVacancy.id)}
-              />
-            </div>
-          )}
-
           {/* Search Bar & Filter Toggle */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <div className="flex-1 relative">
               <input
                 type="text"
@@ -250,17 +230,22 @@ export const ScreenStudentVacancies: React.FC<ScreenStudentVacanciesProps> = ({
 
             {filteredVacancies.length === 0 ? (
               <div className="bg-white rounded-3xl p-6 text-center border border-slate-200">
-                <p className="text-xs text-slate-500 font-medium">По вашему запросу кейсов не найдено.</p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSearchQuery('');
-                    setSelectedSphere('Все');
-                  }}
-                  className="mt-2 text-xs font-bold text-emerald-700 hover:underline"
-                >
-                  Очистить фильтры
-                </button>
+                <p className="text-xs text-slate-700 font-bold">На бирже пока нет опубликованных кейсов.</p>
+                <p className="text-[11px] text-slate-400 mt-1">
+                  Зарегистрируйтесь как работодатель или создайте первую задачу для проверки откликов!
+                </p>
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchQuery('');
+                      setSelectedSphere('Все');
+                    }}
+                    className="mt-2 text-xs font-bold text-emerald-700 hover:underline"
+                  >
+                    Очистить фильтры
+                  </button>
+                )}
               </div>
             ) : (
               filteredVacancies.map((vac) => {

@@ -105,8 +105,8 @@ export const ChatModal: React.FC<ChatModalProps> = ({ dealId, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 select-none">
-      <div className="bg-[#EEF6E1] text-[#121316] rounded-3xl max-w-lg w-full h-[90vh] flex flex-col shadow-2xl border-4 border-black/80 overflow-hidden relative">
+    <div className="absolute inset-0 z-50 bg-[#EEF6E1] text-[#121316] flex flex-col overflow-hidden select-none animate-in fade-in">
+      <div className="w-full h-full flex flex-col relative overflow-hidden">
         {/* Chat Header */}
         <div className="bg-white px-4 py-3 border-b border-black/5 flex items-center justify-between shadow-2xs shrink-0">
           <div className="flex items-center gap-2.5">
@@ -162,10 +162,10 @@ export const ChatModal: React.FC<ChatModalProps> = ({ dealId, onClose }) => {
               <button
                 type="button"
                 onClick={handleAgree}
-                className="flex items-center gap-1.5 bg-[#BAEA55] hover:bg-[#c2f35d] text-black font-black text-xs px-3 py-1.5 rounded-full shadow-md active:scale-95 transition-all"
+                className="flex items-center gap-1.5 bg-[#BAEA55] hover:bg-[#c2f35d] text-black font-black text-xs px-3 py-1.5 rounded-full shadow-md active:scale-95 transition-all whitespace-nowrap shrink-0 cursor-pointer"
               >
                 <Handshake className="w-3.5 h-3.5" />
-                <span>🤝 Договорились!</span>
+                <span>Договорились</span>
               </button>
             </div>
           )}
@@ -176,10 +176,10 @@ export const ChatModal: React.FC<ChatModalProps> = ({ dealId, onClose }) => {
               <button
                 type="button"
                 onClick={() => setShowRequisitesModal(true)}
-                className="flex items-center gap-1.5 bg-[#BAEA55] hover:bg-[#c2f35d] text-black font-black text-xs px-3 py-1.5 rounded-full shadow-md active:scale-95 transition-all"
+                className="flex items-center gap-1.5 bg-[#BAEA55] hover:bg-[#c2f35d] text-black font-black text-xs px-3 py-1.5 rounded-full shadow-md active:scale-95 transition-all whitespace-nowrap shrink-0 cursor-pointer"
               >
                 <CreditCard className="w-3.5 h-3.5" />
-                <span>💳 Отправить реквизиты</span>
+                <span>Отправить реквизиты</span>
               </button>
             </div>
           )}
@@ -201,10 +201,10 @@ export const ChatModal: React.FC<ChatModalProps> = ({ dealId, onClose }) => {
               <button
                 type="button"
                 onClick={handleConfirmPayment}
-                className="flex items-center gap-1.5 bg-[#BAEA55] hover:bg-[#c2f35d] text-black font-black text-xs px-3 py-1.5 rounded-full shadow-md active:scale-95 transition-all"
+                className="flex items-center gap-1.5 bg-[#BAEA55] hover:bg-[#c2f35d] text-black font-black text-xs px-3 py-1.5 rounded-full shadow-md active:scale-95 transition-all whitespace-nowrap shrink-0 cursor-pointer"
               >
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>✅ Подтвердить оплату</span>
+                <span>Подтвердить оплату</span>
               </button>
             </div>
           )}

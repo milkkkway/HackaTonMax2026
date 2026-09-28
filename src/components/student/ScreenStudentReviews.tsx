@@ -22,9 +22,9 @@ export const ScreenStudentReviews: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 w-full flex flex-col p-4 pb-24 overflow-y-auto space-y-4">
+    <div className="flex-1 min-h-0 w-full flex flex-col px-3.5 pt-3 pb-28 overflow-y-auto space-y-3.5">
       {/* Rating Banner */}
-      <div className="bg-[#141517] text-white rounded-3xl p-5 shadow-xl border border-white/5 relative overflow-hidden flex items-center justify-between">
+      <div className="bg-[#141517] text-white rounded-3xl p-4 shadow-xl border border-white/5 relative overflow-hidden flex items-center justify-between shrink-0">
         <div>
           <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
             Средняя оценка исполнителя

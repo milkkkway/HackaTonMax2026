@@ -23,8 +23,8 @@ export const BottomNavBar: React.FC = () => {
   const activeChatsCount = deals.filter(d => d.stage !== 'completed').length;
 
   return (
-    <div className="fixed bottom-3 left-0 right-0 z-30 flex justify-center items-center pointer-events-auto px-4 select-none">
-      <div className="bg-[#141517] text-white px-2 py-1.5 rounded-full flex items-center gap-1 sm:gap-2 shadow-2xl border border-white/10 backdrop-blur-lg max-w-[360px] w-full justify-around">
+    <div className="absolute bottom-2.5 inset-x-0 z-30 flex justify-center items-center pointer-events-auto px-3 select-none">
+      <div className="bg-[#141517] text-white px-2 py-1.5 rounded-full flex items-center gap-1 shadow-2xl border border-white/10 backdrop-blur-lg max-w-[340px] w-full justify-around">
         {currentRole === 'student' ? (
           <>
             {/* Tab 1: Анкета */}

@@ -152,42 +152,49 @@ export const ScreenStudentProfile: React.FC<ScreenStudentProfileProps> = ({
   };
 
   return (
-    <div className="flex-1 w-full flex flex-col p-4 pb-24 overflow-y-auto space-y-4">
+    <div className="flex-1 min-h-0 w-full flex flex-col px-3.5 pt-3 pb-28 overflow-y-auto space-y-3.5">
       {/* Student Badge Card */}
-      <div className="bg-[#141517] text-white rounded-3xl p-4 shadow-xl border border-white/5 relative overflow-hidden">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-13 h-13 rounded-2xl bg-gradient-to-br from-[#BAEA55] to-emerald-400 p-[2px] shadow-sm flex items-center justify-center overflow-hidden">
+      <div className="bg-[#141517] text-white rounded-3xl p-4 shadow-xl border border-white/10 relative overflow-hidden shrink-0">
+        {/* Top Profile Info Row - full width */}
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#BAEA55] to-emerald-400 p-[2px] shadow-sm flex items-center justify-center overflow-hidden shrink-0 text-black font-black text-lg">
+            {currentUser?.avatar ? (
               <img
-                src={currentUser?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'}
-                alt={fullName}
+                src={currentUser.avatar}
+                alt={fullName || 'Студент'}
                 className="w-full h-full object-cover rounded-2xl"
               />
-            </div>
-            <div>
-              <h2 className="font-black text-base text-white">{fullName}</h2>
-              <p className="text-[11px] text-slate-300 font-medium truncate max-w-[190px]">
-                {university || 'ВУЗ не заполнен'}
-              </p>
-              <div className="flex items-center gap-2 mt-1">
-                <span className="flex items-center gap-0.5 text-xs font-black text-[#BAEA55]">
-                  <Star className="w-3.5 h-3.5 fill-[#BAEA55]" />
-                  <span>{studentProfile?.rating.toFixed(1) || '5.0'}</span>
-                </span>
-                <span className="text-[10px] text-slate-400">
-                  • Выполнено кейсов: {studentProfile?.completedProjectsCount || 0}
-                </span>
-              </div>
-            </div>
+            ) : (
+              (fullName || currentUser?.name || 'С').charAt(0).toUpperCase()
+            )}
+          </div>
+          <div className="flex-1 min-w-0">
+            <h2 className="font-black text-[15px] text-white truncate leading-tight">
+              {fullName || currentUser?.name || 'Студент'}
+            </h2>
+            <p className="text-[11px] text-slate-300 font-medium truncate mt-0.5">
+              {university || 'ВУЗ не заполнен'}
+            </p>
+          </div>
+        </div>
+
+        {/* Action & Stats Row - clearly separated with zero horizontal squeeze */}
+        <div className="flex items-center justify-between gap-2 mt-3 pt-2.5 border-t border-white/10">
+          <div className="flex items-center gap-1.5 text-xs font-black text-[#BAEA55]">
+            <Star className="w-3.5 h-3.5 fill-[#BAEA55]" />
+            <span>{studentProfile?.rating?.toFixed(1) || '5.0'}</span>
+            <span className="text-[10px] text-slate-400 font-medium">
+              • {studentProfile?.completedProjectsCount || 0} кейсов
+            </span>
           </div>
 
-          <div className="flex flex-col gap-1.5 items-end">
+          <div className="flex items-center gap-1.5 shrink-0">
             <button
               type="button"
               onClick={() => currentUser && onOpenPreview(currentUser.id)}
-              className="flex items-center gap-1 bg-white/10 hover:bg-white/20 text-[#BAEA55] text-[10.5px] font-bold px-2.5 py-1.5 rounded-full transition-all active:scale-95 cursor-pointer"
+              className="flex items-center gap-1 bg-white/10 hover:bg-white/20 text-[#BAEA55] text-[10.5px] font-bold px-2.5 py-1 rounded-full transition-all active:scale-95 cursor-pointer"
             >
-              <Eye className="w-3.5 h-3.5" />
+              <Eye className="w-3 h-3" />
               <span>Превью</span>
             </button>
             <button

@@ -32,17 +32,17 @@ export const SteppedVacancyCard: React.FC<SteppedVacancyCardProps> = ({
             onViewDetails(vacancy);
           }
         }}
-        className={`absolute right-0 top-0 z-20 flex items-center gap-1.5 rounded-full px-3 py-1.5 shadow-md transition-all active:scale-95 cursor-pointer ${
+        className={`absolute right-3.5 top-[5px] z-20 flex items-center gap-1.5 rounded-full px-3.5 py-1.5 shadow-md transition-all active:scale-95 cursor-pointer whitespace-nowrap ${
           hasApplied
-            ? 'bg-emerald-400 text-black font-extrabold'
+            ? 'bg-emerald-400 hover:bg-emerald-500 text-black font-black'
             : 'bg-[#BAEA55] hover:bg-[#c4f35e] text-black font-extrabold'
         }`}
       >
-        <span className="w-4 h-4 rounded-full bg-black text-[#BAEA55] flex items-center justify-center text-[11px] font-black leading-none">
+        <span className="w-3.5 h-3.5 rounded-full bg-black text-[#BAEA55] flex items-center justify-center text-[10px] font-black leading-none shrink-0">
           {hasApplied ? '✓' : '+'}
         </span>
-        <span className="text-[11.5px] font-extrabold tracking-tight">
-          {hasApplied ? 'Вы откликнулись' : buttonLabel}
+        <span className="text-[11px] font-extrabold tracking-tight whitespace-nowrap">
+          {hasApplied ? 'Отозвать' : buttonLabel}
         </span>
       </button>
 
@@ -55,9 +55,9 @@ export const SteppedVacancyCard: React.FC<SteppedVacancyCardProps> = ({
       >
         <path
           d="M 26 0 
-             L 190 0 
-             C 202 0, 208 9, 211 19 
-             C 214 29, 220 38, 230 38 
+             L 160 0 
+             C 172 0, 178 9, 181 19 
+             C 184 29, 190 38, 202 38 
              L 309 38 
              A 26 26 0 0 1 335 64 
              L 335 149 
@@ -74,15 +74,17 @@ export const SteppedVacancyCard: React.FC<SteppedVacancyCardProps> = ({
       {/* Card Content Overlay */}
       <div
         onClick={() => onViewDetails?.(vacancy)}
-        className="relative z-10 w-full h-full p-4 flex flex-col justify-between text-white cursor-pointer"
+        className="relative z-10 w-full h-full p-3.5 flex flex-col justify-between text-white cursor-pointer"
       >
         {/* Top row info */}
         <div>
-          <div className="flex items-center gap-1.5">
-            <span className="font-extrabold text-[12px] tracking-wider text-[#BAEA55] uppercase flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>МАХ КЕЙС • ТОП ЗАДАЧА</span>
-            </span>
+          <div className="flex items-center justify-between gap-[15px]">
+            <div className="flex items-center gap-1.5 min-w-0">
+              <span className="font-extrabold text-[12px] tracking-wider text-[#BAEA55] uppercase flex items-center gap-1 whitespace-nowrap shrink-0">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>МАХ КЕЙС</span>
+              </span>
+            </div>
           </div>
 
           {/* Price & Title */}

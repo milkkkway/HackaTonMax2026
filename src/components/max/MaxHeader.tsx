@@ -124,54 +124,6 @@ export const MaxHeader: React.FC<MaxHeaderProps> = ({ onBack, showBack = false }
                 <span>Поделиться в чате МАХ</span>
               </button>
 
-              <div className="my-1 border-t border-white/10 pt-1">
-                <span className="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
-                  Быстрый вход для тестов
-                </span>
-                <div className="grid grid-cols-2 gap-1 px-1">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      quickLogin('student-1');
-                      setMenuOpen(false);
-                    }}
-                    className="text-left text-[11px] p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-200 truncate"
-                  >
-                    🎓 Александр
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      quickLogin('student-2');
-                      setMenuOpen(false);
-                    }}
-                    className="text-left text-[11px] p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-200 truncate"
-                  >
-                    🎓 Екатерина
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      quickLogin('employer-1');
-                      setMenuOpen(false);
-                    }}
-                    className="text-left text-[11px] p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-200 truncate"
-                  >
-                    💼 VK Tech
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      quickLogin('employer-2');
-                      setMenuOpen(false);
-                    }}
-                    className="text-left text-[11px] p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-200 truncate"
-                  >
-                    💼 Ритейл
-                  </button>
-                </div>
-              </div>
-
               {currentUser && (
                 <div className="mt-1 border-t border-white/10 pt-1">
                   <button
@@ -190,18 +142,8 @@ export const MaxHeader: React.FC<MaxHeaderProps> = ({ onBack, showBack = false }
             </div>
           )}
         </div>
-
-        {/* Close Button × */}
-        <button
-          type="button"
-          onClick={handleClose}
-          className="w-8 h-8 rounded-full bg-white hover:bg-slate-100 border border-black/5 shadow-2xs flex items-center justify-center text-slate-800 transition-all active:scale-95"
-          aria-label="Закрыть Mini App"
-          title="Закрыть приложение"
-        >
-          <X className="w-4 h-4" />
-        </button>
       </div>
     </div>
+
   );
 };

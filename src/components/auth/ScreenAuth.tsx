@@ -125,7 +125,7 @@ export const ScreenAuth: React.FC = () => {
   };
 
   return (
-    <div className="w-full flex-1 flex flex-col justify-between p-4 sm:p-6 overflow-y-auto">
+    <div className="w-full flex-1 min-h-0 flex flex-col justify-between px-3.5 pt-3 pb-8 overflow-y-auto">
       {/* View: Welcome / Role Selection */}
       {mode === 'welcome' && (
         <div className="flex flex-col gap-4 animate-in fade-in duration-200">
@@ -175,7 +175,7 @@ export const ScreenAuth: React.FC = () => {
                     </span>
                   )}
                 </div>
-                <h3 className="font-extrabold text-sm text-[#121316]">🎓 Я Студент</h3>
+                <h3 className="font-extrabold text-sm text-[#121316]">🎓 Студент</h3>
                 <p className="text-[11px] text-slate-600 mt-1 leading-snug">
                   Реальные кейсы в портфолио, первый коммерческий опыт, отклики на задачи и выплаты по СБП.
                 </p>
@@ -209,7 +209,7 @@ export const ScreenAuth: React.FC = () => {
                   )}
                 </div>
                 <h3 className={`font-extrabold text-sm ${selectedRole === 'employer' ? 'text-white' : 'text-[#121316]'}`}>
-                  💼 Я Работодатель
+                  💼 Работодатель
                 </h3>
                 <p className={`text-[11px] mt-1 leading-snug ${selectedRole === 'employer' ? 'text-slate-300' : 'text-slate-600'}`}>
                   Публикация кейсов и задач, доступ к базе мотивированных студентов Бауманки, ВШЭ, МГУ, сделки и отзывы.
@@ -238,52 +238,10 @@ export const ScreenAuth: React.FC = () => {
                 maxBridge.haptic('light');
                 setMode('login');
               }}
-              className="w-full bg-white hover:bg-slate-50 text-slate-800 font-bold py-2.5 px-4 rounded-2xl shadow-xs transition-all active:scale-95 text-xs text-center border border-slate-200"
+              className="w-full bg-white hover:bg-slate-50 text-slate-800 font-bold py-2.5 px-4 rounded-2xl shadow-xs transition-all active:scale-95 text-xs text-center border border-slate-200 cursor-pointer"
             >
               Уже есть аккаунт? Войти в систему
             </button>
-          </div>
-
-          {/* 1-Click Fast Switcher for Testing All Sides */}
-          <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-3.5 border border-slate-200 mt-2">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-slate-700 mb-2">
-              <KeyRound className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Быстрый вход для проверки работы (1 клик):</span>
-            </div>
-            <div className="grid grid-cols-2 gap-2 text-[11px]">
-              <button
-                type="button"
-                onClick={() => quickLogin('student-1')}
-                className="p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-left font-semibold text-slate-800 shadow-2xs transition-all active:scale-95 flex flex-col"
-              >
-                <span className="font-bold text-[#121316]">🎓 Александр (IT)</span>
-                <span className="text-[10px] text-slate-500">МГТУ, 21 год, React</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => quickLogin('student-2')}
-                className="p-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-left font-semibold text-slate-800 shadow-2xs transition-all active:scale-95 flex flex-col"
-              >
-                <span className="font-bold text-[#121316]">🎓 Екатерина (UI/UX)</span>
-                <span className="text-[10px] text-slate-500">ВШЭ, 20 лет, Figma</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => quickLogin('employer-1')}
-                className="p-2 rounded-xl bg-[#141517] hover:bg-black text-white text-left font-semibold shadow-2xs transition-all active:scale-95 flex flex-col"
-              >
-                <span className="font-bold text-[#BAEA55]">💼 VK Tech Studio</span>
-                <span className="text-[10px] text-slate-300">Москва, 4 задачи</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => quickLogin('employer-2')}
-                className="p-2 rounded-xl bg-[#141517] hover:bg-black text-white text-left font-semibold shadow-2xs transition-all active:scale-95 flex flex-col"
-              >
-                <span className="font-bold text-[#BAEA55]">💼 Цифровой Ритейл</span>
-                <span className="text-[10px] text-slate-300">СПб, E-commerce</span>
-              </button>
-            </div>
           </div>
         </div>
       )}

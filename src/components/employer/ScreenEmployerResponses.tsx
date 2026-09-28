@@ -44,7 +44,7 @@ export const ScreenEmployerResponses: React.FC<ScreenEmployerResponsesProps> = (
   };
 
   return (
-    <div className="flex-1 w-full flex flex-col p-4 pb-24 overflow-y-auto space-y-4">
+    <div className="flex-1 min-h-0 w-full flex flex-col px-3.5 pt-3 pb-28 overflow-y-auto space-y-3.5">
       {/* Filter by Vacancy */}
       <div className="bg-white rounded-3xl p-3.5 shadow-xs border border-slate-200">
         <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">
@@ -163,26 +163,27 @@ export const ScreenEmployerResponses: React.FC<ScreenEmployerResponsesProps> = (
                   </div>
                 ) : (
                   /* Action Buttons */
-                  <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-1.5 text-xs">
                     <button
                       type="button"
                       onClick={() => onPreviewStudent(app.studentId)}
-                      className="flex items-center gap-1.5 text-[11px] font-bold text-slate-700 hover:text-black bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full transition-all active:scale-95"
+                      className="flex items-center gap-1 text-[11px] font-bold text-slate-700 hover:text-black bg-slate-100 hover:bg-slate-200 px-2.5 py-1.5 rounded-full transition-all active:scale-95 whitespace-nowrap shrink-0 cursor-pointer"
                     >
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>Анкета студента</span>
+                      <Eye className="w-3.5 h-3.5 text-slate-500" />
+                      <span>Анкета</span>
                     </button>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5 shrink-0">
                       <button
                         type="button"
                         onClick={() => {
                           maxBridge.haptic('light');
                           setRejectingAppId(app.id);
                         }}
-                        className="text-[11px] font-bold text-slate-400 hover:text-rose-600 px-2 py-1 transition-colors"
+                        className="flex items-center gap-1 text-[11px] font-bold text-white bg-rose-500 hover:bg-rose-600 px-3 py-1.5 rounded-full transition-all active:scale-95 whitespace-nowrap shrink-0 cursor-pointer shadow-xs"
                       >
-                        Отклонить
+                        <XCircle className="w-3.5 h-3.5 text-white" />
+                        <span>Отклонить</span>
                       </button>
 
                       <button
@@ -191,10 +192,10 @@ export const ScreenEmployerResponses: React.FC<ScreenEmployerResponsesProps> = (
                           maxBridge.haptic('medium');
                           onOpenChat(app);
                         }}
-                        className="flex items-center gap-1.5 bg-[#BAEA55] hover:bg-[#c2f35d] text-black text-xs font-black px-3.5 py-1.5 rounded-full shadow-xs active:scale-95 transition-all"
+                        className="flex items-center gap-1 bg-[#BAEA55] hover:bg-[#c2f35d] text-black text-[11px] font-black px-3 py-1.5 rounded-full shadow-xs active:scale-95 transition-all whitespace-nowrap shrink-0 cursor-pointer"
                       >
                         <MessageSquare className="w-3.5 h-3.5" />
-                        <span>Начать чат</span>
+                        <span>Чат</span>
                       </button>
                     </div>
                   </div>

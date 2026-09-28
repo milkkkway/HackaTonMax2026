@@ -44,8 +44,8 @@ export const CreateTaskModal: React.FC<CreateTaskModalProps> = ({ onClose }) => 
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 select-none">
-      <div className="bg-white text-[#121316] rounded-3xl max-w-md w-full max-h-[90vh] flex flex-col shadow-2xl border-4 border-black/80 overflow-hidden animate-in fade-in zoom-in-95">
+    <div className="absolute inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 select-none">
+      <div className="bg-white text-[#121316] rounded-3xl max-w-md w-full max-h-[94%] flex flex-col shadow-2xl border-2 border-black/80 overflow-hidden animate-in fade-in zoom-in-95">
         {/* Header */}
         <div className="p-4 bg-[#141517] text-white flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
