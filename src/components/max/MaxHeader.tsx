@@ -30,19 +30,13 @@ export const MaxHeader: React.FC<MaxHeaderProps> = ({ onBack, showBack = false }
           </button>
         ) : (
           <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#141517] to-[#25282d] p-[2px] shadow-xs flex items-center justify-center text-[#BAEA55] font-black text-sm">
-            M
+            U
           </div>
         )}
 
-        <div>
-          <div className="flex items-center gap-1.5 leading-tight">
-            <span className="font-extrabold text-[14px] text-[#121316] tracking-tight">МАХ Кейсы</span>
-            <span className="inline-flex items-center px-1.5 py-0.2 rounded-full text-[9.5px] font-bold bg-[#BAEA55] text-black">
-              2026
-            </span>
-          </div>
-          <span className="text-[10px] text-slate-500 font-medium block -mt-0.5">
-            {currentRole === 'student' ? 'Кабинет Студента' : currentRole === 'employer' ? 'Кабинет Работодателя' : 'Мини-приложение VK'}
+        <div className="flex items-center">
+          <span className="font-extrabold text-[16px] tracking-tight bg-gradient-to-r from-[#121316] via-[#2c3d14] to-[#71a017] bg-clip-text text-transparent">
+            UniSync
           </span>
         </div>
       </div>
